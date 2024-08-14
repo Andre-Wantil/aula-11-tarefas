@@ -10,11 +10,17 @@ h1 {
 }
 
 #taskList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1277px;
   list-style-type: none;
   padding: 0;
 }
 
 #taskList li {
+  display: flex;
+  justify-content: space-between;
   background-color: #fff;
   margin-bottom: 10px;
   padding: 10px;
@@ -26,6 +32,7 @@ h1 {
 #taskInput {
   width: 100%;
   padding: 10px;
+  padding-right: 0;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
