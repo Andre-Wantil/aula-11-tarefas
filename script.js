@@ -1,22 +1,41 @@
+// Constante que armazena a lista
 let tasks = [];
-const button = document.getElementById('addTaskButton');
 
-function seeIt(result) {
-    document.getElementById('taskList').innerHTML = result;
+// Função que mostra a lista
+function seeList() {
+    const taskListElement = document.getElementById('taskList');
+    taskListElement.innerHTML = "";
+
+    for (let i = 0; i < tasks.length; i++) {
+        taskListElement.innerHTML += `
+        <li>
+        ${i + 1}. ${tasks[i]}
+        <button type='button' onclick='remove(${i})'>X</button>
+        </li>
+        `
+    }
 }
 
-function addTask() {
-    let inputValue = document.getElementById('taskInput').value;
+// Função que adiciona tarefas à lista
+function addTask(list, newTask) {
 
-    tasks.push(inputValue)
-    console.log(tasks)
-
-    let result = ``
-    for (let i = 0; i < tasks.length; i++) {
-        result += "<li>" + tasks[i] + `<button type='button'>X</button>` + "</li>"
+    if (newTask && !(newTask.includes("  ")) && newTask.length > 2) {
+        list.push(newTask);
+        seeList();
+        document.getElementById('taskInput').value = '';
     }
+}
 
-    seeIt(result);
+// Função que cria um evento ao pressionar o botão na página
+document.getElementById('addTaskButton').addEventListener('click', () => {
+    const taskInput = document.getElementById('taskInput');
+    const task = taskInput.value;
+    addTask(tasks, task);
+})
 
-    document.getElementById('taskInput').value = ''
+// Função para deletar a tarefa
+function remove(id) {
+    tasks.splice(id, 1)
+
+    seeList()
 }

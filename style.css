@@ -13,7 +13,7 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1277px;
+  max-width: 100%;
   list-style-type: none;
   padding: 0;
 }
